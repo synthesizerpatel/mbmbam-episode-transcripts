@@ -1,7 +1,21 @@
 # mbmbam-episode-transcripts
 OpenAI's Whisper transcoded MBMBAM episode transcripts
 
-I wrote a tool that naive spider to gather all the episode base URLS
+## Description:
+
+This git repo has OpenAI Whisper generated time-coded transcripts for every episode of MBMBAM in .srt, .txt, and .vtt formats. 
+I'm aware that there are transcripts available through the webpage but they're in PDF format and they lack time code. They are
+a wonderful resource, just not the type of resource I needed. Hence, this project.
+
+I used the large dataset for Whisper which seems fairly high quality.
+
+## Copyright
+
+I place this work into the public domain. You can do whatever you want with it. If you do something cool I'd like to hear about it.
+
+## Methodology:
+
+I wrote a tool that quick and dirty spider to gather all the MBMBAM episode base URLS
 ```
 #!/usr/bin/env python3
 
@@ -11,9 +25,10 @@ import lxml.html
 import re
 import pprint
 
-MAX_PAGES=54
+MAX_PAGES=54 # This is how many pages of episode data there are.
 
 forms = [
+        # I anticipated more than one form of URL but there didn't turn out to be.
         re.compile('https:\/\/maximumfun.org\/episodes\/my-brother-my-brother-and-me/') # 636-millie-vanilli-bobby-flay/
 ]
 
@@ -25,7 +40,9 @@ for x in range(1,MAX_PAGES):
         x = lxml.html.fromstring(r.content)
         for y in x.xpath('//a/@href'):
                 m = forms[0].match(y)
+              
                 if m is not None:
+                        # De-dupe the base URLs
                         urls[y] = 1
 
 for x in urls.keys():
