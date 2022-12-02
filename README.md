@@ -40,7 +40,8 @@ for x in $(cat urls); do
 done
 ```
 
-Once I downloaded all the episodes I let OpenAI Whisper loose on the episodes using the large data set for a week. I don't recommend it.
+Once I downloaded all the episodes I let OpenAI Whisper loose on the episodes using the large data set for a week on my Nvidia 3090. 
+I don't recommend it.
 
 ```
 for x in *.mp3; do
