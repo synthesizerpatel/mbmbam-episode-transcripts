@@ -48,6 +48,6 @@ for x in *.mp3; do
 done
 ```
 
-This resulted in the *.srt, *.tyxt, and *.vtt files generated for each episode. 
+This resulted in the *.srt, *.txt, and *.vtt files generated for each episode. 
 
 I retained the original mp3 filenames. They're a bit unwieldy. 
